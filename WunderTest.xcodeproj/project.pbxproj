@@ -80,6 +80,10 @@
 		C1FF7C1F2153DD630049C681 /* CarListModuleDefaultBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C1E2153DD630049C681 /* CarListModuleDefaultBuilder.swift */; };
 		C1FF7C212153DF840049C681 /* HomescreenModuleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C202153DF840049C681 /* HomescreenModuleConstants.swift */; };
 		C1FF7C232153F3120049C681 /* CarMapModuleDefaultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C222153F3120049C681 /* CarMapModuleDefaultPresenter.swift */; };
+		C1FF7C252153F8D40049C681 /* CarListModuleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C242153F8D40049C681 /* CarListModuleConstants.swift */; };
+		C1FF7C28215404A50049C681 /* MKMapSize.boundsCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C27215404A50049C681 /* MKMapSize.boundsCoordinates.swift */; };
+		C1FF7C2A21541A5B0049C681 /* CarMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C2921541A5B0049C681 /* CarMapViewModel.swift */; };
+		C1FF7C2C21541AF20049C681 /* CarMapViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C2B21541AF20049C681 /* CarMapViewModelBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +176,10 @@
 		C1FF7C1E2153DD630049C681 /* CarListModuleDefaultBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListModuleDefaultBuilder.swift; sourceTree = "<group>"; };
 		C1FF7C202153DF840049C681 /* HomescreenModuleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenModuleConstants.swift; sourceTree = "<group>"; };
 		C1FF7C222153F3120049C681 /* CarMapModuleDefaultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarMapModuleDefaultPresenter.swift; sourceTree = "<group>"; };
+		C1FF7C242153F8D40049C681 /* CarListModuleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListModuleConstants.swift; sourceTree = "<group>"; };
+		C1FF7C27215404A50049C681 /* MKMapSize.boundsCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapSize.boundsCoordinates.swift; sourceTree = "<group>"; };
+		C1FF7C2921541A5B0049C681 /* CarMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarMapViewModel.swift; sourceTree = "<group>"; };
+		C1FF7C2B21541AF20049C681 /* CarMapViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarMapViewModelBuilder.swift; sourceTree = "<group>"; };
 		CFFE752A0C4819DB44E12E2E /* Pods_WunderTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8C5353C80A6E344E668C8F /* Pods_WunderTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -256,6 +264,7 @@
 		C155BAF321529A6F00FCFF76 /* CarList */ = {
 			isa = PBXGroup;
 			children = (
+				C1FF7C242153F8D40049C681 /* CarListModuleConstants.swift */,
 				C1FF7BCA2153B61C0049C681 /* View */,
 				C1FF7BCC2153B6300049C681 /* Interactor */,
 				C1FF7BCB2153B6250049C681 /* Presenter */,
@@ -300,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				C155BAFF21529C7000FCFF76 /* CarListViewModel.swift */,
+				C1FF7C2921541A5B0049C681 /* CarMapViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -309,6 +319,7 @@
 			children = (
 				C155BB0321529DBC00FCFF76 /* ViewModelBuilder.swift */,
 				C155BB0521529E4F00FCFF76 /* CarListViewModelBuilder.swift */,
+				C1FF7C2B21541AF20049C681 /* CarMapViewModelBuilder.swift */,
 			);
 			path = ViewModelBuilders;
 			sourceTree = "<group>";
@@ -339,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				C1FF7BB6215392E50049C681 /* Constants */,
+				C1FF7C26215404720049C681 /* Extensions */,
 				C1FF7BA421538ED40049C681 /* Networking */,
 				C1F35C3921528958008296A5 /* Models */,
 				C155BAE221528D3D00FCFF76 /* Entities */,
@@ -632,6 +644,14 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		C1FF7C26215404720049C681 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C1FF7C27215404A50049C681 /* MKMapSize.boundsCoordinates.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CDF28DD1C867660B0C562ED9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,10 +872,12 @@
 				C1FF7BC22153AA420049C681 /* RepositorySyncService.swift in Sources */,
 				C155BB0421529DBC00FCFF76 /* ViewModelBuilder.swift in Sources */,
 				C1FF7BA821538FC70049C681 /* LocationsApiRequest.swift in Sources */,
+				C1FF7C2A21541A5B0049C681 /* CarMapViewModel.swift in Sources */,
 				C155BAFA21529BC700FCFF76 /* HomescreenModuleViewController.swift in Sources */,
 				C1FF7C212153DF840049C681 /* HomescreenModuleConstants.swift in Sources */,
 				C155BB0621529E4F00FCFF76 /* CarListViewModelBuilder.swift in Sources */,
 				C1FF7BF52153CF200049C681 /* CarMapModuleView.swift in Sources */,
+				C1FF7C252153F8D40049C681 /* CarListModuleConstants.swift in Sources */,
 				C1FF7C142153DA5C0049C681 /* HomesceenModuleRouter.swift in Sources */,
 				C1FF7C1A2153DC1E0049C681 /* CarListModuleDefaultRouter.swift in Sources */,
 				C155BAE721528F2100FCFF76 /* CarEntityMapper.swift in Sources */,
@@ -876,6 +898,7 @@
 				C1FF7BC72153B4780049C681 /* HomescreenModuleBuilder.swift in Sources */,
 				C1FF7C1F2153DD630049C681 /* CarListModuleDefaultBuilder.swift in Sources */,
 				C1FF7BD92153C0A70049C681 /* CarListModulePresenter.swift in Sources */,
+				C1FF7C28215404A50049C681 /* MKMapSize.boundsCoordinates.swift in Sources */,
 				C1FF7BF82153CF670049C681 /* CarMapModulePresenter.swift in Sources */,
 				C1FF7BFE2153D0190049C681 /* CarMapModuleInteractor.swift in Sources */,
 				C1FF7BAE215391630049C681 /* ConfigService.swift in Sources */,
@@ -897,6 +920,7 @@
 				C1FF7BC02153A9DD0049C681 /* SyncService.swift in Sources */,
 				C1FF7C0C2153D92C0049C681 /* HomescreenModulePresenter.swift in Sources */,
 				C1FF7C062153D1440049C681 /* CarMapModuleDefaultBuilder.swift in Sources */,
+				C1FF7C2C21541AF20049C681 /* CarMapViewModelBuilder.swift in Sources */,
 				C1FF7BB1215391BC0049C681 /* AlamofireApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

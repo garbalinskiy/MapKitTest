@@ -9,8 +9,12 @@ class CarMapModuleDefaultBuilder: CarMapModuleBuilder {
         
         container = Container(parent: parentContainer)
         
-        container.register(CarMapModuleInteractor.self) { _ in
-            CarMapModuleDefaultInteractor()
+        container.register(CarMapViewModelBuilder.self) { _ in
+            CarMapViewModelBuilder()
+        }
+        
+        container.register(CarMapModuleInteractor.self) { resolver in
+            CarMapModuleDefaultInteractor(carRepository: resolver.resolve(CarRepository.self)!)
         }
         
         container.register(CarMapModuleRouter.self) { resolver in
@@ -28,7 +32,8 @@ class CarMapModuleDefaultBuilder: CarMapModuleBuilder {
         container.register(CarMapModulePresenter.self) { resolver in
             CarMapModuleDefaultPresenter(view: resolver.resolve(CarMapModuleViewController.self)!,
                                           router: resolver.resolve(CarMapModuleRouter.self)!,
-                                          interactor: resolver.resolve(CarMapModuleInteractor.self)!)
+                                          interactor: resolver.resolve(CarMapModuleInteractor.self)!,
+                                          viewModelBuilder: resolver.resolve(CarMapViewModelBuilder.self)!)
         }
     }
     

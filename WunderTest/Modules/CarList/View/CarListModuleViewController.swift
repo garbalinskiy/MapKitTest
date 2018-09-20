@@ -14,6 +14,8 @@ class CarListModuleViewController: UIViewController {
         super.viewDidLoad()
         
         initTableView()
+        
+        presenter.viewDidLoad()
     }
     
     func initTableView() {
@@ -42,6 +44,10 @@ extension CarListModuleViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellReuseId) as! CarListTableViewCell
         cell.configureWith(cars[indexPath.item])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(CarListModuleConstants.tableCellHeight)
     }
 }
 

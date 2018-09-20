@@ -13,10 +13,21 @@ class CarRealmRepository: CarRepository {
         self.entityMapper = entityMapper
     }
     
-    func findAll() -> Observable<[Car]> {
-        return Observable.create { [unowned self] observer in
+    func reload(_ cars: [Car]) {
+        try! realm.write {
+            realm.deleteAll()
+            realm.add(cars.map({ entityMapper.map(from: $0)}))
+        }
+    }
     
-            let fetchResult = self.realm.objects(CarEntity.self)
+    private func observable(with predicate: NSPredicate? = nil) -> Observable<[Car]> {
+        return Observable.create { [unowned self] observer in
+            
+            var fetchResult = self.realm.objects(CarEntity.self)
+            
+            if let predicate = predicate {
+                fetchResult = fetchResult.filter(predicate)
+            }
             
             let notificationToken = fetchResult.observe { [weak self] _ in
                 guard let `self` = self else { return }
@@ -29,10 +40,15 @@ class CarRealmRepository: CarRepository {
         }
     }
     
-    func reload(_ cars: [Car]) {
-        try! realm.write {
-            realm.deleteAll()
-            realm.add(cars.map({ entityMapper.map(from: $0)}))
-        }
+    func findAll() -> Observable<[Car]> {
+        return observable()
+    }
+    
+    func findInBounds(minLongitude: Double, minLatitude: Double, maxLongitude: Double, maxLatitude: Double) -> Observable<[Car]> {
+        
+        let predicate = NSPredicate(format: "latitude >= %@ AND latitude <= %@ AND longitude >= %@ AND longitude <= %@",
+                                    argumentArray: [minLatitude, maxLatitude, minLongitude, maxLongitude])
+        
+        return observable(with: predicate)
     }
 }

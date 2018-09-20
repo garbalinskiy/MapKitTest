@@ -9,6 +9,10 @@ class CarListModuleDefaultBuilder: CarListModuleBuilder {
         
         container = Container(parent: parentContainer)
         
+        container.register(CarListViewModelBuilder.self) { _ in
+            CarListViewModelBuilder()
+        }
+        
         container.register(CarListModuleInteractor.self) { resolver in
             CarListModuleDefaultInteractor(carRepository: resolver.resolve(CarRepository.self)!)
         }
@@ -28,7 +32,8 @@ class CarListModuleDefaultBuilder: CarListModuleBuilder {
         container.register(CarListModulePresenter.self) { resolver in
             CarListModuleDefaultPresenter(view: resolver.resolve(CarListModuleViewController.self)!,
                                           router: resolver.resolve(CarListModuleRouter.self)!,
-                                          interactor: resolver.resolve(CarListModuleInteractor.self)!)
+                                          interactor: resolver.resolve(CarListModuleInteractor.self)!,
+                                          viewModelBuilder: resolver.resolve(CarListViewModelBuilder.self)!)
         }
     }
     
