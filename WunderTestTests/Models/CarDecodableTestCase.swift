@@ -6,7 +6,7 @@ class CarDecodableTestCase: XCTestCase {
     var jsonData: Data!
     
     override func setUp() {
-        let jsonURL = Bundle.main.url(forResource: "location", withExtension: "json")!
+        let jsonURL = Bundle(for: type(of: self)).url(forResource: "location", withExtension: "json")!
         jsonData = try! Data(contentsOf: jsonURL)
     }
 

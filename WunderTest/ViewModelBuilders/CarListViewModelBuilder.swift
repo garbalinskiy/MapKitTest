@@ -3,19 +3,21 @@ import Foundation
 class CarListViewModelBuilder: ViewModelBuilder {
     
     let coordinateFormat = "%.5f"
+    let fuelFormat = "%.0f"
     
     typealias Model = Car
     typealias ViewModel = CarListViewModel
     
     func build(_ model: Car) -> CarListViewModel {
         
-        return CarListViewModel(vin: model.vin,
-                                name: model.name,
+        return CarListViewModel(name: model.name,
+                                vin: model.vin,
                                 address: model.address,
-                                longitude: String(format: coordinateFormat, model.coordinates.longitude),
-                                latitude: String(format: coordinateFormat, model.coordinates.latitude),
+                                coordinates: String(format: coordinateFormat, model.coordinates.longitude)
+                                    + " "
+                                    + String(format: coordinateFormat, model.coordinates.latitude),
                                 engineType: model.engineType,
-                                fuel: model.fuel,
+                                fuel: String(format: fuelFormat, model.fuel),
                                 exterior: name(for: model.exterior),
                                 interior: name(for: model.interior)
         )

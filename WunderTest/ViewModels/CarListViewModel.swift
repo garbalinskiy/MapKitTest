@@ -2,17 +2,12 @@ import Foundation
 
 struct CarListViewModel {
     
-    let vin: String
     let name: String
-    
+    let vin: String
     let address: String
-    let longitude: String
-    let latitude: String
-    
+    let coordinates: String
     let engineType: String
-    let fuel: Double
-    
+    let fuel: String
     let exterior: String
     let interior: String
-    
 }

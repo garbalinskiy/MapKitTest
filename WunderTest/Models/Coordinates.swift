@@ -13,6 +13,7 @@ struct Coordinates: Decodable, Equatable {
     }
     
     init(from decoder: Decoder) throws {
+        
         let arrayContainer = try decoder.singleValueContainer()
         let coordinatesArray = try arrayContainer.decode([Double].self)
         

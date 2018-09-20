@@ -1,5 +1,5 @@
 import Foundation
 
-protocol HomescreeModuleViewInterface {
+protocol CarListModuleView: AnyObject {
     func showCars(_: [CarListViewModel])
 }

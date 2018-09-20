@@ -1,21 +1,23 @@
-//
-//  AppDelegate.swift
-//  WunderTest
-//
-//  Created by Sergey Garbalinskiy on 9/19/18.
-//  Copyright © 2018 Sergey Garbalinskiy. All rights reserved.
-//
-
 import UIKit
+import Swinject
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    var disposeBag = DisposeBag()
+    
+    let syncService = Container.default.resolve(SyncService.self)!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.window?.rootViewController = Container.default.resolve(HomescreenModuleBuilder.self)!.build()
+        
+        updateData(application)
+        
         return true
     }
 
@@ -41,6 +43,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func updateData(_ application: UIApplication) {
+        
+        application.isNetworkActivityIndicatorVisible = true
+        
+        syncService.updateCars().subscribe(onCompleted: {
+            application.isNetworkActivityIndicatorVisible = false
+        }, onError: { error in
+            application.isNetworkActivityIndicatorVisible = false
+        }).disposed(by: disposeBag)
+    }
 
 }
 
