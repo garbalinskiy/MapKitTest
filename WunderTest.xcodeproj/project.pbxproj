@@ -33,6 +33,7 @@
 		C1FF7B9B2152F7900049C681 /* CarDecodableTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7B9A2152F7900049C681 /* CarDecodableTestCase.swift */; };
 		C1FF7B9D2152F86F0049C681 /* location.json in Resources */ = {isa = PBXBuildFile; fileRef = C1FF7B9C2152F86F0049C681 /* location.json */; };
 		C1FF7BA0215384020049C681 /* CarEntityMapperTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7B9F215384020049C681 /* CarEntityMapperTestCase.swift */; };
+		C1FF7BA321538A290049C681 /* CarRealmRepositoryTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7BA221538A290049C681 /* CarRealmRepositoryTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		C1FF7B9A2152F7900049C681 /* CarDecodableTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDecodableTestCase.swift; sourceTree = "<group>"; };
 		C1FF7B9C2152F86F0049C681 /* location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location.json; sourceTree = "<group>"; };
 		C1FF7B9F215384020049C681 /* CarEntityMapperTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarEntityMapperTestCase.swift; sourceTree = "<group>"; };
+		C1FF7BA221538A290049C681 /* CarRealmRepositoryTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRealmRepositoryTestCase.swift; sourceTree = "<group>"; };
 		CFFE752A0C4819DB44E12E2E /* Pods_WunderTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8C5353C80A6E344E668C8F /* Pods_WunderTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -248,6 +250,7 @@
 		C1F35C2D215288C8008296A5 /* WunderTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				C1FF7BA1215389F30049C681 /* Repositories */,
 				C1FF7B9E2153839E0049C681 /* EntityMappers */,
 				C1FF7B992152F7410049C681 /* Models */,
 				C1F35C30215288C8008296A5 /* Info.plist */,
@@ -289,6 +292,14 @@
 				C1FF7B9F215384020049C681 /* CarEntityMapperTestCase.swift */,
 			);
 			path = EntityMappers;
+			sourceTree = "<group>";
+		};
+		C1FF7BA1215389F30049C681 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C1FF7BA221538A290049C681 /* CarRealmRepositoryTestCase.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		CDF28DD1C867660B0C562ED9 /* Pods */ = {
@@ -519,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FF7BA321538A290049C681 /* CarRealmRepositoryTestCase.swift in Sources */,
 				C1FF7B9B2152F7900049C681 /* CarDecodableTestCase.swift in Sources */,
 				C1FF7BA0215384020049C681 /* CarEntityMapperTestCase.swift in Sources */,
 				C1FF7B962152F6990049C681 /* Stubable.swift in Sources */,

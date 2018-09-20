@@ -1,6 +1,6 @@
 import Foundation
 
-struct Car: Decodable {
+struct Car: Decodable, Equatable {
     let address: String
     let coordinates: Coordinates
     let engineType: String
