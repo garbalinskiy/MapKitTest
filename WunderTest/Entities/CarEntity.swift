@@ -19,6 +19,6 @@ class CarEntity: Object {
     dynamic var vin = ""
     
     override static func primaryKey() -> String? {
-        return "vim"
+        return "vin"
     }
 }
