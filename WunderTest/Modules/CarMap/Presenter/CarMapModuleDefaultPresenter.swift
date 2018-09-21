@@ -23,7 +23,6 @@ class CarMapModuleDefaultPresenter<B: ViewModelBuilder>: CarMapModulePresenter w
     }
     
     func viewDidLoad() {
-        print("View did load")
     }
     
     func didSelectMapArea(minLongitude: Double, minLatitude: Double, maxLongitude: Double, maxLatitude: Double) {
@@ -36,7 +35,7 @@ class CarMapModuleDefaultPresenter<B: ViewModelBuilder>: CarMapModulePresenter w
                                                         })
     }
     
-    func showCars(_ cars: [Car]) {
+    private func showCars(_ cars: [Car]) {
         let viewModels = cars.map({ viewModelBuilder.build($0) })
         view.showCars(viewModels)
     }

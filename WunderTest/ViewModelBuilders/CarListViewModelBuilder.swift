@@ -13,9 +13,9 @@ class CarListViewModelBuilder: ViewModelBuilder {
         return CarListViewModel(name: model.name,
                                 vin: model.vin,
                                 address: model.address,
-                                coordinates: String(format: coordinateFormat, model.coordinates.longitude)
-                                    + " "
-                                    + String(format: coordinateFormat, model.coordinates.latitude),
+                                coordinates: String(format: coordinateFormat, model.coordinates.latitude)
+                                    + ", "
+                                    + String(format: coordinateFormat, model.coordinates.longitude),
                                 engineType: model.engineType,
                                 fuel: String(format: fuelFormat, model.fuel),
                                 exterior: name(for: model.exterior),

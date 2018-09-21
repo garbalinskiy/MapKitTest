@@ -1,7 +1,6 @@
 import Foundation
 
-struct CarListViewModel {
-    
+struct CarListViewModel: Equatable {
     let name: String
     let vin: String
     let address: String

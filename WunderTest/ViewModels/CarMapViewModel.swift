@@ -1,6 +1,6 @@
 import Foundation
 
-struct CarMapViewModel {
+struct CarMapViewModel: Equatable {
     let title: String
     let vin: String
     let latitude: Double
