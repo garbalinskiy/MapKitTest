@@ -87,6 +87,9 @@
 		C1FF7C2F2154504A0049C681 /* CarAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C2E2154504A0049C681 /* CarAnnotation.swift */; };
 		C1FF7C312154DF9E0049C681 /* CarAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C302154DF9E0049C681 /* CarAnnotationView.swift */; };
 		C1FF7C332154F81B0049C681 /* CarMapModuleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C322154F81B0049C681 /* CarMapModuleConstants.swift */; };
+		C1FF7C35215516960049C681 /* CarAnnotationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C34215516960049C681 /* CarAnnotationDetailsView.swift */; };
+		C1FF7C37215516C00049C681 /* CarAnnotationDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FF7C36215516C00049C681 /* CarAnnotationDetailsView.xib */; };
+		C1FF7C39215521B70049C681 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C38215521B70049C681 /* Palette.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +189,9 @@
 		C1FF7C2E2154504A0049C681 /* CarAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnnotation.swift; sourceTree = "<group>"; };
 		C1FF7C302154DF9E0049C681 /* CarAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnnotationView.swift; sourceTree = "<group>"; };
 		C1FF7C322154F81B0049C681 /* CarMapModuleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarMapModuleConstants.swift; sourceTree = "<group>"; };
+		C1FF7C34215516960049C681 /* CarAnnotationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnnotationDetailsView.swift; sourceTree = "<group>"; };
+		C1FF7C36215516C00049C681 /* CarAnnotationDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarAnnotationDetailsView.xib; sourceTree = "<group>"; };
+		C1FF7C38215521B70049C681 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		CFFE752A0C4819DB44E12E2E /* Pods_WunderTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8C5353C80A6E344E668C8F /* Pods_WunderTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -479,6 +485,7 @@
 		C1FF7BB6215392E50049C681 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				C1FF7C38215521B70049C681 /* Palette.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -665,6 +672,8 @@
 			children = (
 				C1FF7C2E2154504A0049C681 /* CarAnnotation.swift */,
 				C1FF7C302154DF9E0049C681 /* CarAnnotationView.swift */,
+				C1FF7C34215516960049C681 /* CarAnnotationDetailsView.swift */,
+				C1FF7C36215516C00049C681 /* CarAnnotationDetailsView.xib */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -769,6 +778,7 @@
 				C1FF7BD52153B7520049C681 /* CarListModuleViewController.xib in Resources */,
 				C1FF7BE92153CC470049C681 /* Averta-Black.otf in Resources */,
 				C1FF7BE42153C2450049C681 /* CarListTableViewCell.xib in Resources */,
+				C1FF7C37215516C00049C681 /* CarAnnotationDetailsView.xib in Resources */,
 				C155BAFB21529BC700FCFF76 /* HomescreenModuleViewController.xib in Resources */,
 				C1F35C21215288C8008296A5 /* Assets.xcassets in Resources */,
 				C1F35C1F215288C6008296A5 /* Main.storyboard in Resources */,
@@ -882,6 +892,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1FF7C042153D0B40049C681 /* CarMapModuleBuilder.swift in Sources */,
+				C1FF7C35215516960049C681 /* CarAnnotationDetailsView.swift in Sources */,
 				C1FF7C102153D9810049C681 /* HomescreenModuleInteractor.swift in Sources */,
 				C155BAE921528F3500FCFF76 /* EntityMapper.swift in Sources */,
 				C155BAEB2152913800FCFF76 /* Condition.swift in Sources */,
@@ -928,6 +939,7 @@
 				C1FF7C002153D0430049C681 /* CarMapModuleDefaultInteractor.swift in Sources */,
 				C1FF7C0E2153D94A0049C681 /* HomescreenModuleDefaultPresenter.swift in Sources */,
 				C1FF7BAB2153913F0049C681 /* ApiService.swift in Sources */,
+				C1FF7C39215521B70049C681 /* Palette.swift in Sources */,
 				C1FF7BFB2153CFCF0049C681 /* CarMapModuleRouter.swift in Sources */,
 				C1FF7C122153D9A60049C681 /* HomescreenModuleDefaultInteractor.swift in Sources */,
 				C155BAFD21529BDD00FCFF76 /* HomescreenModuleView.swift in Sources */,

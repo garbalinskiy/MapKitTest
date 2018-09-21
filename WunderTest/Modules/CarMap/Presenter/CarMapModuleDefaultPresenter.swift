@@ -27,6 +27,7 @@ class CarMapModuleDefaultPresenter<B: ViewModelBuilder>: CarMapModulePresenter w
     }
     
     func didSelectMapArea(minLongitude: Double, minLatitude: Double, maxLongitude: Double, maxLatitude: Double) {
+        mapAreaDisposable?.dispose()
         mapAreaDisposable = interactor.findCarsInBounds(minLongitude: minLongitude,
                                                         minLatitude: minLatitude,
                                                         maxLongitude: maxLongitude,

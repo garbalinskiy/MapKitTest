@@ -7,10 +7,11 @@ class CarMapModuleViewController: UIViewController {
     var presenter: CarMapModulePresenter!
     
     private let disposeBag = DisposeBag()
+    private let visibleMapRect = PublishSubject<MKMapRect>()
+    private var mapRectCars: [CarMapViewModel] = []
+    private var selectedCar: CarMapViewModel?
     
     @IBOutlet weak var mapView: MKMapView!
-    
-    let visibleMapRect = PublishSubject<MKMapRect>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,7 @@ class CarMapModuleViewController: UIViewController {
     }
     
     func initMapView() {
-    
+        
         mapView.register(CarAnnotationView.self, forAnnotationViewWithReuseIdentifier: "CarAnnotation")
         
         mapView.delegate = self
@@ -27,17 +28,29 @@ class CarMapModuleViewController: UIViewController {
         visibleMapRect.debounce(0.1, scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] mapRect in
             let (lowerBound, upperBound) = mapRect.boundsCoordinates
             self?.presenter.didSelectMapArea(minLongitude: lowerBound.longitude,
-                                       minLatitude: lowerBound.latitude,
-                                       maxLongitude: upperBound.longitude,
-                                       maxLatitude: upperBound.latitude)
+                                             minLatitude: lowerBound.latitude,
+                                             maxLongitude: upperBound.longitude,
+                                             maxLatitude: upperBound.latitude)
             
         }).disposed(by: disposeBag)
+        
+        mapViewDidChangeVisibleRegion(mapView)
+    }
+    
+    func cancelSelection() {
+        print("canceled")
     }
 }
 
 extension CarMapModuleViewController: CarMapModuleView {
     
     func showCars(_ cars: [CarMapViewModel]) {
+        
+        mapRectCars = cars
+        
+        if selectedCar != nil {
+            return
+        }
         
         let currentsAnnotations = mapView.annotations.compactMap({ $0 as? CarAnnotation })
         let currentAnnotationsVins = Set(currentsAnnotations.map({ $0.vin }))
@@ -71,11 +84,45 @@ extension CarMapModuleViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let view =  mapView.dequeueReusableAnnotationView(withIdentifier: "CarAnnotation", for: annotation)
+        let view = mapView.dequeueReusableAnnotationView(withIdentifier: "CarAnnotation", for: annotation) as! CarAnnotationView
+        
+        if let viewAnnotation = view.annotation as? CarAnnotation, viewAnnotation.vin == selectedCar?.vin {
+            view.addDetails()
+        } else {
+            view.removeDetails()
+        }
+        
         return view
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("Selected a car")
+        
+        guard
+            let view = view as? CarAnnotationView,
+            let selectedAnnotation = view.annotation as? CarAnnotation,
+            let newSelectedCar = mapRectCars.first(where: { $0.vin == selectedAnnotation.vin }) else
+        {
+                return
+        }
+        
+        // In case second tap reset selection
+        if selectedCar?.vin == newSelectedCar.vin {
+            selectedCar = nil
+            view.removeDetails()
+            showCars(mapRectCars)
+            return
+        } else {
+            selectedCar = newSelectedCar
+            view.addDetails()
+        }
+        
+        mapView.deselectAnnotation(selectedAnnotation, animated: false)
+        
+        let annotationToRemove = mapView.annotations.filter({ annotation in
+            guard let annotation = annotation as? CarAnnotation else { return true }
+            return annotation != selectedAnnotation
+        })
+        
+        mapView.removeAnnotations(annotationToRemove)
     }
 }
