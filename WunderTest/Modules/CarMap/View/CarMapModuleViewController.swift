@@ -25,6 +25,14 @@ class CarMapModuleViewController: UIViewController {
         
         mapView.delegate = self
         
+        let initialCenterLocation = CLLocationCoordinate2D(latitude: CarMapModuleConstants.initialLatitude,
+                                                           longitude: CarMapModuleConstants.initialLongitude)
+        
+        mapView.setRegion(MKCoordinateRegion(center: initialCenterLocation,
+                                             latitudinalMeters: CarMapModuleConstants.initialRadius,
+                                             longitudinalMeters: CarMapModuleConstants.initialRadius),
+                          animated: false)
+        
         visibleMapRect.debounce(0.1, scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] mapRect in
             let (lowerBound, upperBound) = mapRect.boundsCoordinates
             self?.presenter.didSelectMapArea(minLongitude: lowerBound.longitude,
