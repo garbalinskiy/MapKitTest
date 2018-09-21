@@ -19,6 +19,8 @@ class CarMapModuleViewController: UIViewController {
     }
     
     func initMapView() {
+    
+        mapView.register(CarAnnotationView.self, forAnnotationViewWithReuseIdentifier: "CarAnnotation")
         
         mapView.delegate = self
         
@@ -36,14 +38,28 @@ class CarMapModuleViewController: UIViewController {
 extension CarMapModuleViewController: CarMapModuleView {
     
     func showCars(_ cars: [CarMapViewModel]) {
-        mapView.removeAnnotations(mapView.annotations)
         
-        cars.forEach({ [unowned self] in
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
-            annotation.title = $0.title
+        let currentsAnnotations = mapView.annotations.compactMap({ $0 as? CarAnnotation })
+        let currentAnnotationsVins = Set(currentsAnnotations.map({ $0.vin }))
+        var obsoleteAnnotationVins = currentAnnotationsVins
+        
+        cars.forEach({ [unowned self] car in
+            
+            obsoleteAnnotationVins.remove(car.vin)
+            
+            if currentAnnotationsVins.contains(car.vin) {
+                return
+            }
+            
+            let annotation = CarAnnotation(title: car.title,
+                                           vin: car.vin,
+                                           coordinate: CLLocationCoordinate2D(latitude: car.latitude, longitude: car.longitude),
+                                           orientation: car.orientation)
+            
             self.mapView.addAnnotation(annotation)
         })
+        
+        mapView.removeAnnotations(currentsAnnotations.filter({ obsoleteAnnotationVins.contains($0.vin) }))
     }
     
     
@@ -52,5 +68,14 @@ extension CarMapModuleViewController: CarMapModuleView {
 extension CarMapModuleViewController: MKMapViewDelegate {
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         visibleMapRect.onNext(mapView.visibleMapRect)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let view =  mapView.dequeueReusableAnnotationView(withIdentifier: "CarAnnotation", for: annotation)
+        return view
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("Selected a car")
     }
 }

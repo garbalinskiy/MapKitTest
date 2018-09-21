@@ -6,7 +6,9 @@ class CarMapViewModelBuilder: ViewModelBuilder {
     
     func build(_ car: Car) -> CarMapViewModel {
         return CarMapViewModel(title: car.name,
+                               vin: car.vin,
                                latitude: car.coordinates.latitude,
-                               longitude: car.coordinates.longitude)
+                               longitude: car.coordinates.longitude,
+                               orientation: car.coordinates.orientation)
     }
 }

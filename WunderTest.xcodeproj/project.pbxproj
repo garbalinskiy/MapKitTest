@@ -84,6 +84,9 @@
 		C1FF7C28215404A50049C681 /* MKMapSize.boundsCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C27215404A50049C681 /* MKMapSize.boundsCoordinates.swift */; };
 		C1FF7C2A21541A5B0049C681 /* CarMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C2921541A5B0049C681 /* CarMapViewModel.swift */; };
 		C1FF7C2C21541AF20049C681 /* CarMapViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C2B21541AF20049C681 /* CarMapViewModelBuilder.swift */; };
+		C1FF7C2F2154504A0049C681 /* CarAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C2E2154504A0049C681 /* CarAnnotation.swift */; };
+		C1FF7C312154DF9E0049C681 /* CarAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C302154DF9E0049C681 /* CarAnnotationView.swift */; };
+		C1FF7C332154F81B0049C681 /* CarMapModuleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FF7C322154F81B0049C681 /* CarMapModuleConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +183,9 @@
 		C1FF7C27215404A50049C681 /* MKMapSize.boundsCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapSize.boundsCoordinates.swift; sourceTree = "<group>"; };
 		C1FF7C2921541A5B0049C681 /* CarMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarMapViewModel.swift; sourceTree = "<group>"; };
 		C1FF7C2B21541AF20049C681 /* CarMapViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarMapViewModelBuilder.swift; sourceTree = "<group>"; };
+		C1FF7C2E2154504A0049C681 /* CarAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnnotation.swift; sourceTree = "<group>"; };
+		C1FF7C302154DF9E0049C681 /* CarAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnnotationView.swift; sourceTree = "<group>"; };
+		C1FF7C322154F81B0049C681 /* CarMapModuleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarMapModuleConstants.swift; sourceTree = "<group>"; };
 		CFFE752A0C4819DB44E12E2E /* Pods_WunderTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8C5353C80A6E344E668C8F /* Pods_WunderTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -277,6 +283,7 @@
 		C155BAF421529A8300FCFF76 /* CarMap */ = {
 			isa = PBXGroup;
 			children = (
+				C1FF7C322154F81B0049C681 /* CarMapModuleConstants.swift */,
 				C1FF7BEF2153CECF0049C681 /* View */,
 				C1FF7BEE2153CEC90049C681 /* Presenter */,
 				C1FF7BFC2153D0030049C681 /* Interactor */,
@@ -592,6 +599,7 @@
 		C1FF7BEF2153CECF0049C681 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C1FF7C2D215450230049C681 /* Subviews */,
 				C1FF7BF42153CF200049C681 /* CarMapModuleView.swift */,
 				C1FF7BF02153CF100049C681 /* CarMapModuleViewController.swift */,
 				C1FF7BF12153CF100049C681 /* CarMapModuleViewController.xib */,
@@ -650,6 +658,15 @@
 				C1FF7C27215404A50049C681 /* MKMapSize.boundsCoordinates.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C1FF7C2D215450230049C681 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				C1FF7C2E2154504A0049C681 /* CarAnnotation.swift */,
+				C1FF7C302154DF9E0049C681 /* CarAnnotationView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		CDF28DD1C867660B0C562ED9 /* Pods */ = {
@@ -870,6 +887,7 @@
 				C155BAEB2152913800FCFF76 /* Condition.swift in Sources */,
 				C1FF7C182153DBFD0049C681 /* CarListModuleRouter.swift in Sources */,
 				C1FF7BC22153AA420049C681 /* RepositorySyncService.swift in Sources */,
+				C1FF7C2F2154504A0049C681 /* CarAnnotation.swift in Sources */,
 				C155BB0421529DBC00FCFF76 /* ViewModelBuilder.swift in Sources */,
 				C1FF7BA821538FC70049C681 /* LocationsApiRequest.swift in Sources */,
 				C1FF7C2A21541A5B0049C681 /* CarMapViewModel.swift in Sources */,
@@ -889,6 +907,7 @@
 				C1FF7BDD2153C18C0049C681 /* CarListModuleDefaultInteractor.swift in Sources */,
 				C155BB082152A44100FCFF76 /* Coordinates.swift in Sources */,
 				C1FF7BC52153ACC90049C681 /* Container.swift in Sources */,
+				C1FF7C312154DF9E0049C681 /* CarAnnotationView.swift in Sources */,
 				C155BB0021529C7000FCFF76 /* CarListViewModel.swift in Sources */,
 				C1FF7C232153F3120049C681 /* CarMapModuleDefaultPresenter.swift in Sources */,
 				C155BAE421528D5000FCFF76 /* CarEntity.swift in Sources */,
@@ -900,6 +919,7 @@
 				C1FF7BD92153C0A70049C681 /* CarListModulePresenter.swift in Sources */,
 				C1FF7C28215404A50049C681 /* MKMapSize.boundsCoordinates.swift in Sources */,
 				C1FF7BF82153CF670049C681 /* CarMapModulePresenter.swift in Sources */,
+				C1FF7C332154F81B0049C681 /* CarMapModuleConstants.swift in Sources */,
 				C1FF7BFE2153D0190049C681 /* CarMapModuleInteractor.swift in Sources */,
 				C1FF7BAE215391630049C681 /* ConfigService.swift in Sources */,
 				C1FF7C162153DAC20049C681 /* HomescreenModuleDefaultRouter.swift in Sources */,
