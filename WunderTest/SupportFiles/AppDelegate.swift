@@ -7,17 +7,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var disposeBag = DisposeBag()
-    
-    let syncService = Container.default.resolve(SyncService.self)!
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        self.window?.rootViewController = Container.default.resolve(HomescreenModuleBuilder.self)!.build()
-        
-        updateData(application)
-        
+        let rootViewController = Container.default.resolve(HomescreenModuleBuilder.self)!.build()
+        self.window?.rootViewController = rootViewController        
+
         return true
     }
 
@@ -41,17 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-    func updateData(_ application: UIApplication) {
-        
-        application.isNetworkActivityIndicatorVisible = true
-        
-        syncService.updateCars().subscribe(onCompleted: {
-            application.isNetworkActivityIndicatorVisible = false
-        }, onError: { error in
-            application.isNetworkActivityIndicatorVisible = false
-        }).disposed(by: disposeBag)
     }
 
 }

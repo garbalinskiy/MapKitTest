@@ -1,5 +1,6 @@
 import Foundation
 
 protocol HomescreenModulePresenter: AnyObject {
-    func viewDidLoad()
+    func viewDidAppear()
+    func didRequstedDataUpdate(notify: Bool)
 }

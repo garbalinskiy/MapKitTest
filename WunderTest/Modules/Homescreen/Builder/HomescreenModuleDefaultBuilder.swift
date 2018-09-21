@@ -8,8 +8,8 @@ class HomescreenModuleDefaultBuilder: HomescreenModuleBuilder {
     init(container parentContainer: Container) {
         container = Container(parent: parentContainer)
         
-        container.register(HomescreenModuleInteractor.self) { _ in
-            HomescreenModuleDefaultInteractor()
+        container.register(HomescreenModuleInteractor.self) { resolver in
+            HomescreenModuleDefaultInteractor(syncService: resolver.resolve(SyncService.self)!)
         }
         
         container.register(HomescreenModuleRouter.self) { resolver in
@@ -21,6 +21,7 @@ class HomescreenModuleDefaultBuilder: HomescreenModuleBuilder {
                 
                 let nibName = String(describing: HomescreenModuleViewController.self)
                 let tabBarController = HomescreenModuleViewController(nibName: nibName, bundle: .main)
+                tabBarController.tabBar.tintColor = Palette.darkGreen
                 
                 let carListModuleViewController = resolver.resolve(CarListModuleBuilder.self)!.build()
                 carListModuleViewController.tabBarItem = UITabBarItem(title: "List",
@@ -36,7 +37,7 @@ class HomescreenModuleDefaultBuilder: HomescreenModuleBuilder {
                     carListModuleViewController,
                     carMapModuleViewController
                 ]
-                
+
                 return tabBarController
             }
             .initCompleted { resolver, viewController in
